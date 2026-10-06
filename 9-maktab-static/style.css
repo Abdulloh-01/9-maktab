@@ -1,0 +1,857 @@
+:root {
+  --bg: #f3f5f8;
+  --surface: #fff;
+  --ink: #172238;
+  --muted: #647187;
+  --brand: #153e78;
+  --brand-dark: #0e2d59;
+  --soft: #dce8f8;
+  --primary: #1769d2;
+  --line: #dce1e8;
+  --white: #fafdff;
+  --radius: 6px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: Manrope, system-ui, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, 
+input, 
+textarea {
+  font: inherit;
+}
+
+.container {
+  width: min(1200px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+.skip {
+  position: fixed;
+  left: 16px;
+  top: -80px;
+  z-index: 200;
+  background: var(--surface);
+  padding: 12px 16px;
+}
+
+.skip:focus {
+  top: 16px;
+}
+
+:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 3px;
+}
+
+/* Top bar */
+.topbar {
+  background: var(--brand);
+  color: #dce8f8;
+}
+
+.topbar-inner {
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  font: 11px 'IBM Plex Mono', monospace;
+}
+
+.contacts, 
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.tools {
+  gap: 6px;
+}
+
+.language {
+  display: flex;
+  border: 1px solid #ffffff44;
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.language button, 
+.icon-button {
+  height: 36px;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+}
+
+.language button {
+  padding: 0 10px;
+}
+
+.language .active, 
+.icon-button:hover {
+  background: #ffffff1f;
+  color: #fff;
+}
+
+.icon-button {
+  width: 42px;
+  border: 1px solid #ffffff44;
+  border-radius: var(--radius);
+}
+
+/* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: #ffffffee;
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(12px);
+}
+
+.header-inner {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.logo-mark {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+}
+
+.logo strong, 
+.logo small {
+  display: block;
+}
+
+.logo strong {
+  font-size: 14px;
+  color: var(--brand);
+}
+
+.logo small {
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.desktop-nav {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.nav-group {
+  position: relative;
+}
+
+/* Настройки главного навигатора (увеличили шрифт с 12px до 15px, как просили ранее) */
+.nav-trigger {
+  height: 42px;
+  border: 0;
+  background: transparent;
+  padding: 0 12px;
+  color: var(--muted);
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.nav-trigger:hover {
+  color: var(--brand);
+}
+
+.dropdown {
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(5px);
+  position: absolute;
+  left: 0;
+  top: 100%;
+  min-width: 255px;
+  padding: 8px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 14px 35px #13223820;
+  transition: .18s;
+}
+
+.nav-group:hover .dropdown, 
+.nav-group:focus-within .dropdown {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+}
+
+/* Выпадающие ссылки в меню (увеличили шрифт с 12px до 14px) */
+.dropdown a {
+  display: block;
+  padding: 10px 14px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.dropdown a:hover {
+  background: var(--soft);
+  color: var(--brand);
+}
+
+.primary-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--brand);
+  color: #fff;
+  padding: 11px 16px;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.primary-button:hover {
+  background: var(--brand-dark);
+}
+
+.menu-button {
+  display: none;
+  margin-left: auto;
+  width: 44px;
+  height: 44px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.mobile-nav {
+  display: none;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  max-height: calc(100vh - 110px);
+  overflow: auto;
+  padding: 10px 16px;
+}
+
+.mobile-nav.open {
+  display: block;
+}
+
+.mobile-nav details {
+  border-bottom: 1px solid var(--line);
+  padding: 8px 0;
+}
+
+.mobile-nav summary {
+  cursor: pointer;
+  font-weight: 700;
+  padding: 8px;
+}
+
+.mobile-nav a {
+  display: block;
+  padding: 10px 14px;
+  color: var(--muted);
+  font-size: 16px;
+}
+
+/* Hero блок (Приветствие) */
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: 580px;
+  overflow: hidden;
+  background: var(--brand);
+}
+
+.hero > img {
+  position: absolute;
+  inset: 0;
+  z-index: -3;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: linear-gradient(90deg, var(--brand-dark), #153e78dd, #153e7819);
+}
+
+.diagonal {
+  position: absolute;
+  z-index: -1;
+  left: -25%;
+  top: -100px;
+  bottom: -100px;
+  width: 72%;
+  transform: rotate(10deg);
+  background: #ffffff18;
+  border-inline: 1px solid #ffffff2b;
+  backdrop-filter: blur(4px);
+}
+
+.hero-content {
+  padding-top: 84px;
+  padding-bottom: 80px;
+  color: var(--white);
+}
+
+.hero-content > h1 {
+  max-width: 760px;
+  margin: 18px 0 0;
+  font-size: clamp(36px, 5vw, 64px);
+  line-height: 1.05;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--soft);
+  font: 11px 'IBM Plex Mono', monospace;
+  text-transform: uppercase;
+}
+
+.eyebrow i, 
+.announcements h2 i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+.hero-copy {
+  max-width: 660px;
+  line-height: 1.7;
+  color: #fafdffda;
+}
+
+.quick-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  max-width: 760px;
+  margin-top: 36px;
+}
+
+.quick-links a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 68px;
+  padding: 12px 16px;
+  border: 1px solid #ffffff44;
+  border-radius: var(--radius);
+  background: #ffffff18;
+  backdrop-filter: blur(10px);
+}
+
+.quick-links a:hover {
+  background: #ffffff2c;
+}
+
+.quick-links b, 
+.quick-links small {
+  display: block;
+}
+
+.quick-links b {
+  font-size: 14px;
+}
+
+.quick-links small {
+  margin-top: 5px;
+  color: #ffffffb5;
+  font-size: 11px;
+}
+
+/* News */
+.news-layout {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 40px;
+  padding-block: 64px;
+}
+
+.section-title {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.section-title a {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 176px 1fr;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.news-item img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.news-item time, 
+.announcements time {
+  color: var(--muted);
+  font: 11px 'IBM Plex Mono', monospace;
+}
+
+.news-item h3 {
+  margin: 10px 0;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.news-item a {
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+.pagination button {
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: var(--brand);
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: 0 2px 8px #1421360a;
+}
+
+.card h2 {
+  margin: 0;
+  font-size: 21px;
+}
+
+.card > p {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.announcements {
+  height: max-content;
+}
+
+.announcements h2 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 16px;
+}
+
+.announcements ul, 
+.portals {
+  list-style: none;
+  margin: 20px 0 0;
+  padding: 0;
+}
+
+.announcements li {
+  display: flex;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.announcements a {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+/* Stats & gallery */
+.stats {
+  background: var(--brand);
+  color: var(--white);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  padding-block: 46px;
+}
+
+.stats strong {
+  display: block;
+  font-size: 40px;
+}
+
+.stats span {
+  display: block;
+  margin-top: 8px;
+  color: var(--soft);
+  font-size: 11px;
+  text-transform: uppercase;
+}
+
+.gallery {
+  padding-block: 64px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+/* Адаптивность и медиа-запросы */
+@media (max-width: 1199px) {
+  .desktop-nav { display: none; }
+  .menu-button { display: block; }
+  .appeal-button { margin-left: auto; }
+  .menu-button { margin-left: 0; }
+}
+
+@media (max-width: 800px) {
+  .contacts a:nth-child(2), 
+  .contacts span {
+    display: none;
+  }
+  .news-layout, 
+  .contact-layout, 
+  .gallery-grid, 
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid, 
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .appeal-button { display: none; }
+  .menu-button { margin-left: auto; }
+  .footer-bottom .container { flex-direction: column; }
+}
+
+@media (max-width: 520px) {
+  .container { width: calc(100% - 24px); }
+  .hero-content { padding-top: 56px; }
+  .news-item { grid-template-columns: 112px 1fr; gap: 15px; }
+  .stats strong { font-size: 32px; }
+  .footer-grid { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+/* Form */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  padding-bottom: 64px;
+}
+
+.card form {
+  display: grid;
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.card label {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.card input, 
+.card textarea {
+  display: block;
+  width: 100%;
+  margin-top: 7px;
+  padding: 11px 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.card textarea {
+  resize: vertical;
+}
+
+.card form .primary-button {
+  width: max-content;
+}
+
+.status {
+  margin: 0;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.portals li {
+  border-bottom: 1px solid var(--line);
+}
+
+.portals a {
+  display: flex;
+  justify-content: space-between;
+  padding: 17px 0;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.portals a:hover {
+  color: var(--primary);
+}
+
+/* Footer */
+footer {
+  background: var(--brand);
+  color: #ffffffbf;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  padding-block: 48px;
+}
+
+.footer-grid strong {
+  display: block;
+  color: #fff;
+}
+
+.footer-grid p, 
+.footer-grid a, 
+.footer-grid span {
+  display: block;
+  margin-top: 11px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ffffff1c;
+}
+
+.footer-bottom .container {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding-block: 20px;
+  font: 11px 'IBM Plex Mono', monospace;
+}
+
+/* Animation */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.rise {
+  animation: rise .7s both;
+}
+
+.d1 { animation-delay: .05s; }
+.d2 { animation-delay: .14s; }
+.d3 { animation-delay: .24s; }
+.d4 { animation-delay: .34s; }
+
+/* Accessibility modes */
+html.large-text {
+  font-size: 118%;
+  zoom: 1.12;
+}
+
+html.high-contrast {
+  --bg: #fff;
+  --surface: #fff;
+  --ink: #000;
+  --muted: #222;
+  --brand: #000;
+  --brand-dark: #000;
+  --soft: #fff;
+  --primary: #003ca6;
+  --line: #000;
+}
+
+/* Responsive (Адаптивность) */
+@media (max-width: 1199px) {
+  .desktop-nav {
+    display: none;
+  }
+  .menu-button {
+    display: block;
+  }
+  .appeal-button {
+    margin-left: auto;
+  }
+  .menu-button {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 800px) {
+  .contacts a:nth-child(2), 
+  .contacts span {
+    display: none;
+  }
+  .news-layout, 
+  .contact-layout, 
+  .gallery-grid, 
+  .quick-links {
+    grid-template-columns: 1fr;
+  }
+  .stats-grid, 
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .appeal-button {
+    display: none;
+  }
+  .menu-button {
+    margin-left: auto;
+  }
+  .footer-bottom .container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 520px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+  .hero-content {
+    padding-top: 56px;
+  }
+  .news-item {
+    grid-template-columns: 112px 1fr;
+    gap: 15px;
+  }
+  .stats strong {
+    font-size: 32px;
+  }
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+  }
+}
+
+
+/* ==========================================
+   💫 УСИЛЕННЫЕ ЭФФЕКТЫ SCROLL REVEAL (DEEP & SMOOTH)
+   ========================================== */
+
+.reveal {
+  opacity: 0;
+  /* Увеличили дистанцию до 70px, чтобы блок летел выше и заметнее */
+  transform: translateY(90px); 
+  
+  /* Увеличили время до 1.2s и добавили более дорогую физику плавности (cubic-bezier) */
+  transition: opacity 1.2s cubic-bezier(0.215, 0.610, 0.355, 1), 
+              transform 1.2s cubic-bezier(0.215, 0.610, 0.355, 1);
+  
+  will-change: opacity, transform;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0); /* Возвращаем в исходную точку */
+}

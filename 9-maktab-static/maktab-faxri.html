@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maktab faxri - 9-sonli maktab</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://googleapis.com" rel="stylesheet">
+  <link rel="icon" href="assets/photo_2018-09-08_21-42-07.jpg" type="image/svg+xml">
+
+</head>
+<body>
+
+  <!-- Навигационная ссылка для доступности -->
+  <a href="#main-content" class="skip">Asosiy mazmunga o'tish</a>
+
+  <!-- 1. TOP BAR (Контакты и Спец-режимы) -->
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <div class="contacts">
+        <a href="tel:03712352402">☎ 0 371 235-24-02</a>
+        <a href="mailto:y-9maktab@inbox.uz">✉ y-9maktab@inbox.uz</a>
+        <span>⌖ Yunusobod tumani Minor mahalla, Markaz 6</span>
+      </div>
+      <div class="tools">
+        <div class="language">
+          <button class="active">UZ</button>
+          <button>RU</button>
+        </div>
+        <button id="fontButton" class="icon-button" aria-label="Kattalashtirilgan shrift">A+</button>
+        <button id="contrastButton" class="icon-button" aria-label="Yuqori kontrastli rejim">◐</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. HEADER (Шапка сайта, меню соберется через JS) -->
+  <header class="header">
+    <div class="container header-inner">
+      <a class="logo" href="index.html">
+        <img src="assets/photo_2018-09-08_21-42-07.jpg" alt="9-maktab logotipi" style="width: 42px; height: 42px; object-fit: contain; border-radius: 6px; flex-shrink: 0;">
+        <span>
+          <strong>9-sonli maktab</strong>
+          <small>Yunusobod · Toshkent</small>
+        </span>
+      </a>
+      <nav id="desktopNav" class="desktop-nav"></nav>
+      <a href="index.html#murojaat" class="primary-button appeal-button">✉ Murojaat</a>
+      <button id="menuButton" class="menu-button" aria-label="Menyuni ochish">☰</button>
+    </div>
+    <nav id="mobileNav" class="mobile-nav"></nav>
+  </header>
+
+  <!-- 3. HERO (Главный баннер — УБРАЛИ класс reveal, теперь он виден ОМАХ!) -->
+  <section id="top" class="hero" style="min-height: 380px;">
+    <img src="assets/photo_2026-10-05_18-43-25.jpg" alt="Maktab koridoridagi o'quvchilar" loading="eager">
+    <div class="hero-shade"></div>
+    <div class="diagonal"></div>
+    <div class="container hero-content" style="padding-top: 50px; padding-bottom: 30px;">
+      <p class="eyebrow"><i></i> Davlat umumta'lim maktabi</p>
+      <h1 style="font-size: clamp(26px, 4vw, 44px); max-width: 800px; color: #fff;">Toshkent shahar Yunusobod tumani 9-sonli umumta'lim maktabi</h1>
+      <p class="hero-copy" style="color: #fafdffda; line-height: 1.7;">Har bir o'quvchi uchun ochiq eshiklar, aniq maqsadlar va zamonaviy ta'lim muhiti. Barcha rasmiy ma'lumot va xizmatlar bir joyda.</p>
+    </div>
+  </section>
+
+  <!-- 4. ОСНОВНОЙ КОНТЕНТ (Исправленная структура тегов) -->
+  <main id="main-content" class="container" style="padding-block: 40px;">
+    
+    <!-- Хлебные крошки и дата публикации -->
+    <div style="display: flex; justify-content: space-between; align-items: center; color: var(--muted); font-size: 13px; margin-bottom: 30px;">
+      <div>
+        <a href="index.html" style="color: var(--primary);">Bosh sahifa</a> / <span>Maktab faxri</span>
+      </div>
+      <time style="font-family: 'IBM Plex Mono', monospace;">06.10.2026, 23:45</time>
+    </div>
+
+    <!-- Чистая карточка ученика -->
+    <div class="card" style="max-width: 800px; margin: 0 auto; text-align: center; padding: 40px 24px;">
+      
+      <!-- Фотография выдающегося ученика -->
+      <img src="assets/student.jpg" alt="Maktab faxri" style="width: 240px; height: 320px; object-fit: cover; border-radius: var(--radius); border: 1px solid var(--line); margin-bottom: 24px;">
+
+      <!-- Личные данные -->
+      <h3 style="font-size: 24px; color: var(--ink); margin: 0 0 16px 0;">Abdulloh Aliev</h3>
+      
+      <div style="font-size: 14px; line-height: 1.8; color: var(--ink); text-transform: uppercase; font-weight: 600; margin-bottom: 24px;">
+        <p style="margin: 4px 0;">TELEFON: <span style="font-family: 'IBM Plex Mono'; text-transform: none;">+998 90 118-50-10</span></p>
+        <p style="margin: 4px 0;">YUTUQLARI: <span style="color: var(--primary); text-transform: none;">Xalqaro Informatika Olimpiadasi g'olibi</span></p>
+        <p style="margin: 4px 0;">E-MAIL: <span style="font-family: 'IBM Plex Mono'; text-transform: none; color: var(--muted);">abdulloh.aliev0903@gmail.com</span></p>
+      </div>
+
+      <!-- Биография / Достижения -->
+      <hr style="border: 0; border-top: 1px solid var(--line); margin-block: 24px;">
+      <p style="text-align: center; color: var(--muted); line-height: 1.7; font-size: 16px; font-weight: 700; color: var(--brand);">
+        Sayt asoschisi, (Software Engineer)
+      </p>
+    </div>
+  </main>
+
+  <!-- 5. БЛОК СТАТИСТИКИ (Всегда виден под карточкой) -->
+  <section class="stats">
+    <div class="container stats-grid">
+      <div><strong>1 240</strong><span>O'quvchi</span></div>
+      <div><strong>48</strong><span>Kabinet</span></div>
+      <div><strong>92</strong><span>Pedagog</span></div>
+      <div><strong>55</strong><span>Yillik tarix</span></div>
+    </div>
+  </section>
+
+  <!-- 6. ФУТЕР -->
+  <footer>
+    <div class="container footer-grid">
+      <div>
+        <strong>9-sonli umumta'lim maktabi</strong>
+        <p>Yunusobod tumani Minor mahalla, Markaz 6, Toshkent.</p>
+      </div>
+      <div>
+        <strong>Aloqa</strong>
+        <span style="font-family: 'IBM Plex Mono';">0 371 235-24-02</span>
+        <span>y-9maktab@inbox.uz</span>
+      </div>
+      <div>
+        <strong>Bo'limlar</strong>
+        <a href="https://9-maktab.uz">Maktab nizomi</a>
+        <a href="https://9-maktab.uz">Qabul kunlari</a>
+        <a href="https://9-maktab.uz">Bo'sh ish o'rinlari</a>
+      </div>
+      <div>
+        <strong>Ochiqlik</strong>
+        <a href="https://9-maktab.uz">Normativ hujjatlar</a>
+        <a href="https://9-maktab.uz">Davlat ramzlari</a>
+        <a href="https://9-maktab.uz">Matbuot xizmati</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="container">
+        <span>© 2026 Yunusobod tumani 9-sonli maktab</span>
+        <span>O'zbekiston Respublikasi · Davlat ta'lim muassasasi</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Общий JS для динамической шапки -->
+  <script src="script.js"></script>
+</body>
+</html>
